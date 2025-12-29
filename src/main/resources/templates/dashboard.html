@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <!-- INTERNAL CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+        }
+
+        .navbar {
+            background: #2980b9;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            background: #e74c3c;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .navbar a:hover {
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .welcome {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2980b9;
+        }
+
+        .card p {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div>LoginApp Dashboard</div>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container">
+        <div class="welcome">
+            Welcome to your Dashboard 👋
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Profile</h3>
+                <p>View account details</p>
+            </div>
+
+            <div class="card">
+                <h3>Settings</h3>
+                <p>Update preferences</p>
+            </div>
+
+            <div class="card">
+                <h3>Reports</h3>
+                <p>View activity</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
