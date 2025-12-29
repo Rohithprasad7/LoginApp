@@ -93,3 +93,9 @@ loginapp
                 ├── login.html
                 ├── register.html
                 └── dashboard.html
+
+Screenshots:
+<img width="1919" height="1063" alt="Screenshot 2025-12-27 164208" src="https://github.com/user-attachments/assets/3fb87160-c40f-4ad7-ad56-e104b3be2aa3" />
+<img width="1913" height="1145" alt="Screenshot 2025-12-27 164147" src="https://github.com/user-attachments/assets/4c80d4db-fe28-46ef-adde-0feb80ed434c" />
+<img width="1919" height="1148" alt="Screenshot 2025-12-27 163852" src="https://github.com/user-attachments/assets/c0243f08-15ac-406f-b223-f63372bf3a24" />
+
