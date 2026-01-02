@@ -38,6 +38,24 @@
             border: 1px solid #ccc;
         }
 
+        .password-box {
+            position: relative;
+        }
+
+        .password-box span {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .match-message {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
         button {
             width: 100%;
             padding: 10px;
@@ -47,10 +65,12 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 10px;
         }
 
-        button:hover {
-            opacity: 0.9;
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
         }
 
         .link {
@@ -66,21 +86,68 @@
 </head>
 
 <body>
-    <div class="register-box">
-        <h2>Register</h2>
+<div class="register-box">
+    <h2>Register</h2>
 
-        <!-- ✅ CONTROLLER-BASED FORM -->
-        <form th:action="@{/register}" method="post">
-            Mail ID:<input type="email" name="email" placeholder="Email ID" required>
-            Password:<input type="password" name="password" placeholder="Password" required>
-            Confirm Password:<input type="password" name="confirmPassword" placeholder="Confirm Password" required>
-            <button type="submit">Register</button>
-        </form>
+    <form th:action="@{/register}" method="post">
+        Mail ID:
+        <input type="email" name="email" placeholder="Email ID" required>
 
-        <div class="link">
-            <!-- ✅ CONTROLLER-BASED LINK -->
-            <a th:href="@{/}">Back to Login</a>
+        Password:
+        <div class="password-box">
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <span onclick="togglePassword('password')">👁</span>
         </div>
+
+        Confirm Password:
+        <div class="password-box">
+            <input type="password" id="confirmPassword" name="confirmPassword"
+                   placeholder="Confirm Password"
+                   required
+                   onkeyup="checkPasswordMatch()">
+            <span onclick="togglePassword('confirmPassword')">👁</span>
+        </div>
+
+        <!-- ✅ PASSWORD MATCH MESSAGE -->
+        <div id="matchMessage" class="match-message"></div>
+
+        <button type="submit" id="registerBtn" disabled>Register</button>
+    </form>
+
+    <div class="link">
+        <a th:href="@{/}">Back to Login</a>
     </div>
+</div>
+
+<script>
+function togglePassword(id) {
+    const input = document.getElementById(id);
+    input.type = input.type === "password" ? "text" : "password";
+}
+
+function checkPasswordMatch() {
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirmPassword").value;
+    const message = document.getElementById("matchMessage");
+    const button = document.getElementById("registerBtn");
+
+    if (confirm.length === 0) {
+        message.textContent = "";
+        button.disabled = true;
+        return;
+    }
+
+    if (password === confirm) {
+        message.textContent = "Passwords match";
+        message.style.color = "green";
+        button.disabled = false;
+    } else {
+        message.textContent = "Passwords do not match";
+        message.style.color = "red";
+        button.disabled = true;
+    }
+}
+</script>
+
 </body>
 </html>
